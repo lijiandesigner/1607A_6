@@ -1,0 +1,57 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="~/Content/bootstrap-3.3.7/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/jquery类库/jquery-3.1.1.js"></script>
+</head>
+<body>
+    <div>
+        <table border="1" align="center" class="table">
+            <tr>
+                <td>请输入员工编号：</td>
+                <td><input id="txtEid" type="text" /></td>
+            </tr>
+            <tr>
+                <td>请输入密码：</td>
+                <td>
+                    <input id="txtPwd" type="password" />
+                </td>
+            </tr>
+            <tr>
+                <td align="center"><input id="Button1" type="button" value="登录" onclick="Addr()" /></td>
+                <td align="center"><input id="Button1" type="button" value="返回" onclick="location.href='/Demo/Login'" /></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+<script>
+    function Addr() {
+        var eid = $("#txtEid").val();
+        var pwd = $("#txtPwd").val();
+        if (eid == "" || pwd == "") {
+            alert("登录名和密码不能为空");
+        }
+        else {
+            var str = { Eid: eid, Pwd: pwd };
+            $.ajax({
+                url: "",
+                type: "post",
+                data: str,
+                success: function (data) {
+                    if (data > 0) {
+                        alert("登录成功");
+                    }
+                }
+            })
+        }
+    }
+</script>

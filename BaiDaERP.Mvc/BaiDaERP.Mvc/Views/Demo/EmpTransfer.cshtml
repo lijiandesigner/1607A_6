@@ -1,0 +1,62 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EmpTransfer</title>
+</head>
+<body>
+    <div> 
+        <table>
+            <tr>
+                <td>员工编号：</td>
+                <td>
+                    <span>获取员工id</span>
+                </td>
+            </tr>
+            <tr>
+                <td>员工姓名：</td>
+                <td>
+                    <span>获取员工姓名</span>
+                </td>
+            </tr>
+            <tr>
+                <td>原部门：</td>
+                <td>
+                    <select id="Select1">
+                        <option>获取员工原部门进行反填</option>
+
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>调动部门：</td>
+                <td>
+                    <select id="Select1">
+                        <option>==请选择==</option>
+                        <option>人事部</option>
+                        <option>技术部</option>
+                        <option>财务</option>
+
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>调动原因：</td>
+                <td>
+                    <textarea id="txtTreason" rows="2" cols="20"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td><input id="Button1" type="button" value="确认调动" /></td>
+                <td><input id="Button1" type="button" value="返回" /></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

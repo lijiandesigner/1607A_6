@@ -1,0 +1,62 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap-3.3.7/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/jquery类库/jquery-3.1.1.js"></script>
+    <title>Show</title>
+</head>
+<body>
+    <div>
+        <table class="table" border="1" align="center">
+            <thead>
+                <tr>
+                    <td>员工编号</td>
+                    <td>员工账号</td>
+                    <td>账号密码</td>
+                    <td>员工姓名</td>
+                    <td>员工性别</td>
+                    <td>员工年龄</td>
+                    <td>员工手机号</td>
+                    <td>员工身份证号码</td>
+                    <td>部门编号</td>
+                    <td>员工头像</td>
+                </tr>
+            </thead>
+            <tbody id="shii"></tbody>
+        </table>
+    </div>
+</body>
+</html>
+<script>
+    //文档准备就绪函数
+    $(function () {
+        $.ajax({
+            url: "",
+            type: "get",
+            dataType: "json",
+            success: function (data) {
+                var str = "";
+                for (var i = 0; i < data.length; i++) {
+                    str += "<tr><td>" + data[i].Eid + "</td>";
+                    str += "<td>" + data[i].Esno + "</td>";
+                    str += "<td>" + data[i].Epwd + "</td>";
+                    str += "<td>" + data[i].Ename + "</td>";
+                    str += "<td>" + data[i].Sex + "</td>";
+                    str += "<td>" + data[i].Age + "</td>";
+                    str += "<td>" + data[i].Phone + "</td>";
+                    str += "<td>" + data[i].IdCard + "</td>";
+                    str += "<td>" + data[i].Did + "</td>";
+                    str += "<td>" + data[i].Head + "</td>";
+                }
+                $("#shii").append(str);
+            }
+        })
+    })
+</script>

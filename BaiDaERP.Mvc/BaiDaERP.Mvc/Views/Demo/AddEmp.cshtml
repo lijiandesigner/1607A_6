@@ -1,0 +1,116 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddEmp</title>
+    <link href="~/Content/bootstrap-3.3.7/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/jquery类库/jquery-3.1.1.js"></script>
+    <style type="text/css">
+        .table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border-left: 1px solid #aaa;
+            border-top: 1px solid #aaa;
+            background: #ffd800;
+        }
+    </style>
+</head>
+@using (Html.BeginForm("AddEmp", "Demo", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <body>
+        <div>
+            <table>
+                <tr>
+                    <td>员工账号</td>
+                    <td><input id="txtNum" type="text" /></td>
+                </tr>
+                <tr>
+                    <td>员工姓名</td>
+                    <td><input id="txtName" type="text" /></td>
+                </tr>
+                <tr>
+                    <td>员工性别</td>
+                    <td>
+                        男<input id="rdoboy" type="radio" name="1" />
+                        女<input id="rdogirl" type="radio" name="1" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>员工年龄</td>
+                    <td><input id="txtAge" type="text" /></td>
+                </tr>
+                <tr>
+                    <td>员工手机号</td>
+                    <td><input id="txtTel" type="text" /></td>
+                </tr>
+                <tr>
+                    <td>员工身份证号</td>
+                    <td><input id="txtIdCard" type="text" /></td>
+                </tr>
+                <tr>
+                    <td>选择部门</td>
+                    <td>
+                        <select id="Select1">
+                            <option>人事部</option>
+                            <option>技术部</option>
+                            <option>财务</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>员工头像</td>
+                    <td>
+                        <input id="File1" type="file" name="img" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input id="Button1" type="button" value="入职" onclick="save()" /></td>
+                </tr>
+            </table>
+        </div>
+    </body>
+}
+
+</html>
+<script>
+    function save() {
+        var num = $("#txtNum").val();
+        var name = $("#txtName").val();
+        var sex = "";
+        if ($("#rdoboy").change) {
+            sex = "男";
+        }
+        else if ($("#rdogirl").change) {
+            sex = "女";
+        }
+        var age = $("#txtAge").val();
+        var tel = $("#txtTel").val();
+        var idcard = $("#txtIdCard").val();
+        //选择部门
+        //员工头像
+        var oo = { Esno: num, Ename: name, Sex: sex, Age: age, Phone: tel, IdCard: idcard };
+        $.ajax({
+            url: "",
+            type: "post",
+            dataType: "json",
+            data: { emp: JSON.stringify(oo) },
+            success: function (data) {
+                if (data > 0) {
+                    alert("入职成功");
+                    location.href("/Demo/Show");
+                }
+                else {
+                    alert("入职失败");
+                }
+            }
+        })
+
+    }
+</script>
